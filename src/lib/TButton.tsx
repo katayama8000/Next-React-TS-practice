@@ -1,10 +1,12 @@
+import type { DOMAttributes } from 'react';
+
 type TButtonProps = {
   block?: boolean;
   children: React.ReactNode;
   className?: string;
   color?: 'blue' | 'green' | 'red' | 'yellow' | 'indigo' | 'dark';
   disabled?: boolean;
-  onClick?: (event: any) => void;
+  onClick?: DOMAttributes<HTMLButtonElement>['onClick'];
   rounded?: boolean;
   size?: 'sm' | 'md' | 'lg';
   submit?: boolean;

@@ -2,8 +2,8 @@ import type { NextPage } from 'next';
 import Link from 'next/link';
 
 type Props = {
-  title: titleType | youTubeTitleType;
-  url: urlType | youTubeUrlType;
+  title: titleType | youTubeTitleType | testTitleType;
+  url: urlType | youTubeUrlType | testUrlType;
 };
 
 export const LinkList: React.FC<Props> = ({ title, url }) => {
@@ -19,6 +19,8 @@ type urlType = typeof LINKS[number]['url'];
 type titleType = typeof LINKS[number]['title'];
 type youTubeUrlType = typeof YOUTUBE_LINKS[number]['url'];
 type youTubeTitleType = typeof YOUTUBE_LINKS[number]['title'];
+type testUrlType = typeof TEST_LINKS[number]['url'];
+type testTitleType = typeof TEST_LINKS[number]['title'];
 
 const LINKS = [
   { title: 'Promise', url: 'Sample/sample1' },
@@ -40,6 +42,7 @@ const LINKS = [
   { title: 'h1~h6', url: 'Sample/sample17' },
   { title: 'react-query', url: 'Sample/sample18' },
   { title: 'react-query-Hooks', url: 'Sample/sample19' },
+  { title: 'complete-Promise', url: 'Sample/sample20' },
 ] as const;
 
 const YOUTUBE_LINKS = [
@@ -51,6 +54,8 @@ const YOUTUBE_LINKS = [
   { title: 'Hooks6', url: 'YouTube/Hooks6' },
 ] as const;
 
+const TEST_LINKS = [{ title: 'Home', url: 'Test/Home' }] as const;
+
 const Home: NextPage = () => {
   return (
     <div>
@@ -61,11 +66,19 @@ const Home: NextPage = () => {
         })}
       </div>
       <hr />
-      <h1>Hooks</h1>
-      {YOUTUBE_LINKS.map((link) => {
-        return <LinkList key={link.title} title={link.title} url={link.url} />;
-      })}
+      <div>
+        <h1>Hooks</h1>
+        {YOUTUBE_LINKS.map((link) => {
+          return <LinkList key={link.title} title={link.title} url={link.url} />;
+        })}
+      </div>
       <hr />
+      <div>
+        <h1>test</h1>
+        {TEST_LINKS.map((link) => {
+          return <LinkList key={link.title} title={link.title} url={link.url} />;
+        })}
+      </div>
       <h1>Hello Next.js 👋</h1>
       <article>
         <ol>
